@@ -8,7 +8,7 @@ This app utilizes Firebase to handle:
 * Data Storage
 * Google Cloud Functions
 
-## --------- Personal notes ---------
+## Personal notes
 
 Pages:
 
