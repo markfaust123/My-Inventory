@@ -7,11 +7,3 @@ export type Item = {
   createdAt: string;
   updatedAt: string;
 };
-
-// Credentials type to handle user authentication
-export type Credentials = {
-  email: string;
-  confirmEmail: string;
-  password: string;
-  confirmPassword: string;
-};
