@@ -5,7 +5,6 @@ import {
   StyleSheet,
   KeyboardTypeOptions,
 } from "react-native";
-
 import { Colors } from "../../constants/styles";
 
 function Input({

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-
 import FlatButton from "../ui/FlatButton";
 import AuthForm from "./AuthForm";
 import { Colors } from "../../constants/styles";
-import type { Credentials } from "../../lib/types";
+import type { Credentials } from "../../types/auth-types";
 import { useNavigation } from "@react-navigation/native";
 
 type Authentication = { email: string; password: string };
