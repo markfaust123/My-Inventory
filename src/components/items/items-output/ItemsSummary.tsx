@@ -1,22 +1,22 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Expense } from "../../lib/types";
-import { GlobalStyles } from "../../lib/constants";
+import type { Item } from "../../../types/items-types";
+import { Colors } from "../../../constants/styles";
 
-const ExpensesSummary = ({
-  expenses,
+const ItemsSummary = ({
+  items,
   periodName,
 }: {
-  expenses: Expense[];
+  items: Item[];
   periodName: string;
 }) => {
-  const sumOfExpenses = expenses.reduce(
-    (sum, expense) => sum + expense.amount,
+  const sumOfItems = items.reduce(
+    (sum, item) => sum + item.price,
     0
   );
   return (
     <View style={styles.container}>
       <Text style={styles.period}>{periodName}</Text>
-      <Text style={styles.sum}>${sumOfExpenses.toFixed(2)}</Text>
+      <Text style={styles.sum}>${sumOfItems.toFixed(2)}</Text>
     </View>
   );
 };
@@ -24,7 +24,7 @@ const ExpensesSummary = ({
 const styles = StyleSheet.create({
   container: {
     padding: 8,
-    backgroundColor: GlobalStyles.colors.primary50,
+    backgroundColor: Colors.primary50,
     borderRadius: 6,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -32,13 +32,13 @@ const styles = StyleSheet.create({
   },
   period: {
     fontSize: 12,
-    color: GlobalStyles.colors.primary400,
+    color: Colors.primary400,
   },
   sum: {
     fontSize: 16,
     fontWeight: "bold",
-    color: GlobalStyles.colors.primary500,
+    color: Colors.primary500,
   },
 });
 
-export default ExpensesSummary;
+export default ItemsSummary;

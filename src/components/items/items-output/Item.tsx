@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Item } from "../../../types/items-types";
+import type { Item } from "../../../types/items-types";
 import { Colors } from "../../../constants/styles";
 import { getFormattedDate } from "../../../util/date";
 
