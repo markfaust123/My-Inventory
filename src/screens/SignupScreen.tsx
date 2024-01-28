@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AuthContent from "../components/auth/AuthContent";
-import { createUser } from "../util/auth";
+import { createUser } from "../lib/auth-api";
 import LoadingOverlay from "../components/auth/ui/LoadingOverlay";
 import { Alert } from "react-native";
 import { useAppDispatch } from "../hooks/use-redux";
