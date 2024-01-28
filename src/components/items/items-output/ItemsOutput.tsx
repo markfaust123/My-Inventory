@@ -2,6 +2,7 @@ import { StyleSheet, View, Text } from "react-native";
 import type { Item } from "../../../types/items-types";
 import ItemsSummary from "./ItemsSummary";
 import { Colors } from "../../../constants/styles";
+import ItemsList from "./ItemsList";
 
 const ItemsOutput = ({
   items,
