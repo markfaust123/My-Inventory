@@ -1,5 +1,4 @@
 import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
-import Input from "./Input";
 import { useState } from "react";
 import Button from "../ui/Button";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -7,6 +6,7 @@ import { useAppDispatch } from "../../hooks/use-redux";
 import { addExpense, updateExpense } from "../../store/redux/expenses";
 import { Expense } from "../../lib/types";
 import { GlobalStyles } from "../../lib/constants";
+import ItemInput from "./ItemInput";
 
 type StateVariable = {
   value: string;
@@ -93,7 +93,7 @@ const ExpenseForm = ({
     <View style={styles.form}>
       <Text style={styles.title}>Your Expense</Text>
       <View style={styles.inputsRow}>
-        <Input
+        <ItemInput
           label="Amount"
           invalid={!inputs.amount.isValid}
           textInputConfig={{
@@ -103,7 +103,7 @@ const ExpenseForm = ({
           }}
           style={styles.rowInput}
         />
-        <Input
+        <ItemInput
           label="Date"
           invalid={!inputs.date.isValid}
           textInputConfig={{
@@ -115,7 +115,7 @@ const ExpenseForm = ({
           style={styles.rowInput}
         />
       </View>
-      <Input
+      <ItemInput
         label="Description"
         invalid={!inputs.description.isValid}
         textInputConfig={{

@@ -4,11 +4,10 @@ import {
   TextInput,
   TextInputProps,
   View,
-  ViewProps,
 } from "react-native";
-import { GlobalStyles } from "../../lib/constants";
+import { Colors } from "../../../constants/styles";
 
-const Input = ({
+const ItemInput = ({
   label,
   invalid,
   style,
@@ -43,12 +42,12 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 12,
-    color: GlobalStyles.colors.primary100,
+    color: Colors.primary100,
     marginBottom: 4,
   },
   input: {
-    backgroundColor: GlobalStyles.colors.primary100,
-    color: GlobalStyles.colors.primary700,
+    backgroundColor: Colors.primary100,
+    color: Colors.primary700,
     padding: 6,
     borderRadius: 6,
     fontSize: 18,
@@ -58,11 +57,11 @@ const styles = StyleSheet.create({
     textAlignVertical: "top",
   },
   invalidLabel: {
-    color: GlobalStyles.colors.error500,
+    color: Colors.error500,
   },
   invalidInput: {
-    backgroundColor: GlobalStyles.colors.error50,
+    backgroundColor: Colors.error100,
   },
 });
 
-export default Input;
+export default ItemInput;
