@@ -1,12 +1,12 @@
-import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useState } from "react";
 import Button from "../ui/Button";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { useAppDispatch } from "../../hooks/use-redux";
-import { addExpense, updateExpense } from "../../store/redux/expenses";
-import { Expense } from "../../lib/types";
-import { GlobalStyles } from "../../lib/constants";
+import { useAppDispatch } from "../../../hooks/use-redux";
+import { addItem, updateItem } from "../../../store/items";
 import ItemInput from "./ItemInput";
+import type { Item } from "../../../types/items-types";
+import { Colors } from "../../../constants/styles";
 
 type StateVariable = {
   value: string;
@@ -19,24 +19,26 @@ type InputValues = {
   description: StateVariable;
 };
 
-const ExpenseForm = ({
+const ItemForm = ({
   defaultValues,
   submitButtonLabel,
   onSubmit,
   onCancel,
 }: {
-  defaultValues: Omit<Expense, "id">;
+  defaultValues: Omit<Item, "id">;
   submitButtonLabel: string;
-  onSubmit: (expenseData: Omit<Expense, "id">) => void;
-  onCancel: () => void
+  onSubmit: (
+    itemData: Omit<Item, "id" | "name" | "quantity" | "updatedAt">
+  ) => void;
+  onCancel: () => void;
 }) => {
   const [inputs, setInputs] = useState<InputValues>({
     amount: {
-      value: defaultValues ? defaultValues.amount.toString() : "",
+      value: defaultValues ? defaultValues.price.toString() : "",
       isValid: true,
     },
     date: {
-      value: defaultValues ? defaultValues.date : "",
+      value: defaultValues ? defaultValues.createdAt : "",
       isValid: true,
     },
     description: {
@@ -58,23 +60,22 @@ const ExpenseForm = ({
   };
 
   const handleConfirm = () => {
-    const expenseData: Omit<Expense, "id"> = {
-      amount: +inputs.amount.value,
-      date: inputs.date.value,
+    const itemData: Omit<Item, "id" | "name" | "quantity" | "updatedAt"> = {
+      price: +inputs.amount.value,
+      createdAt: inputs.date.value,
       description: inputs.description.value,
     };
 
-    const amountIsValid: boolean =
-      !isNaN(expenseData.amount) && expenseData.amount > 0;
-    const dateIsValid: boolean =
-      new Date(expenseData.date).toString() !== "Invalid Date";
-    const descriptionIsValid = expenseData.description.trim().length > 0;
+    const priceIsValid: boolean = !isNaN(itemData.price) && itemData.price > 0;
+    const createdAtIsValid: boolean =
+      new Date(itemData.createdAt).toString() !== "Invalid Date";
+    const descriptionIsValid = itemData.description.trim().length > 0;
 
-    if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
+    if (!priceIsValid || !createdAtIsValid || !descriptionIsValid) {
       setInputs((currentInputs) => {
         return {
-          amount: { value: currentInputs.amount.value, isValid: amountIsValid },
-          date: { value: currentInputs.date.value, isValid: dateIsValid },
+          amount: { value: currentInputs.amount.value, isValid: priceIsValid },
+          date: { value: currentInputs.date.value, isValid: createdAtIsValid },
           description: {
             value: currentInputs.description.value,
             isValid: descriptionIsValid,
@@ -84,10 +85,13 @@ const ExpenseForm = ({
       return;
     }
 
-    onSubmit(expenseData);
+    onSubmit(itemData);
   };
 
-  const formIsInvalid = !inputs.amount.isValid || !inputs.date.isValid || !inputs.description.isValid;
+  const formIsInvalid =
+    !inputs.amount.isValid ||
+    !inputs.date.isValid ||
+    !inputs.description.isValid;
 
   return (
     <View style={styles.form}>
@@ -171,9 +175,9 @@ const styles = StyleSheet.create({
   },
   errorText: {
     textAlign: "center",
-    color: GlobalStyles.colors.error500,
+    color: Colors.error500,
     margin: 8,
-  }
+  },
 });
 
-export default ExpenseForm;
+export default ItemForm;
