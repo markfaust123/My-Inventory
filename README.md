@@ -28,3 +28,6 @@ Pages:
 * Display metrics 
 * The total value of everything currently in the inventory.
 * Net profits (if items sold) over the past week/month
+
+#### DON'T FORGET
+* Remove test mode from real time database and set permissions!
