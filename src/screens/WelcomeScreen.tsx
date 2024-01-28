@@ -1,7 +1,8 @@
 import axios from "axios";
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, StyleSheet, Text, View } from "react-native";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../hooks/use-redux";
+import { FIREBASE_APP_NAME } from "@env";
 
 function WelcomeScreen() {
   const [fetchedMessage, setFetchedMessage] = useState<string>("");
@@ -10,12 +11,19 @@ function WelcomeScreen() {
 
   useEffect(() => {
     const getMessage = async () => {
-      const response = await axios.get(
-        `https://user-authentication-demo-8c444-default-rtdb.firebaseio.com/message.json?auth=${userToken}`
+      try {
+        const response = await axios.get(
+        `https://${FIREBASE_APP_NAME}-default-rtdb.firebaseio.com/message.json?auth=${userToken}`
       );
       setFetchedMessage(response.data);
+      } catch (error) {
+        Alert.alert(
+          "Could not get message!",
+          "Please try again later."
+        );
+      }
     };
-    const response = getMessage();
+    getMessage();
   });
 
   return (
