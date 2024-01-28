@@ -4,6 +4,7 @@ export type Item = {
   name: string;
   price: number;
   quantity: number;
+  description: string;
   createdAt: string;
   updatedAt: string;
 };
