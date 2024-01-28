@@ -31,3 +31,4 @@ Pages:
 
 #### DON'T FORGET
 * Remove test mode from real time database and set permissions!
+* Should probably eventually remove option to create an account and restrict those who don't have accounts from accessing database resources
