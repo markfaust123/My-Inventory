@@ -95,7 +95,7 @@ const ItemForm = ({
 
   return (
     <View style={styles.form}>
-      <Text style={styles.title}>Your Expense</Text>
+      <Text style={styles.title}>Your Item</Text>
       <View style={styles.inputsRow}>
         <ItemInput
           label="Amount"
