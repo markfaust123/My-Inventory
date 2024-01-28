@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import Button from "../ui/Button";
+import Button from "../auth/ui/Button";
 import Input from "./Input";
 import type { Credentials } from "../../types/auth-types";
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-import FlatButton from "../ui/FlatButton";
+import FlatButton from "../auth/ui/FlatButton";
 import AuthForm from "./AuthForm";
 import { Colors } from "../../constants/styles";
 import type { Credentials } from "../../types/auth-types";
