@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Button from "../auth/ui/Button";
-import Input from "./Input";
+import AuthInput from "./AuthInput";
 import type { Credentials } from "../../types/auth-types";
 
 type InvalidCredentials = {
@@ -61,7 +61,7 @@ function AuthForm({
   return (
     <View>
       <View>
-        <Input
+        <AuthInput
           label="Email Address"
           onUpdateValue={updateInputValueHandler.bind(this, "email")}
           value={enteredEmail}
@@ -69,7 +69,7 @@ function AuthForm({
           isInvalid={emailIsInvalid}
         />
         {!isLogin && (
-          <Input
+          <AuthInput
             label="Confirm Email Address"
             onUpdateValue={updateInputValueHandler.bind(this, "confirmEmail")}
             value={enteredConfirmEmail}
@@ -77,7 +77,7 @@ function AuthForm({
             isInvalid={emailsDontMatch}
           />
         )}
-        <Input
+        <AuthInput
           label="Password"
           onUpdateValue={updateInputValueHandler.bind(this, "password")}
           secure
@@ -85,7 +85,7 @@ function AuthForm({
           isInvalid={passwordIsInvalid}
         />
         {!isLogin && (
-          <Input
+          <AuthInput
             label="Confirm Password"
             onUpdateValue={updateInputValueHandler.bind(
               this,
